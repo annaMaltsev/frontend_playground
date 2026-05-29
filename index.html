@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anna — Junior Frontend Developer. Portfolio, skills and experience.">
+    <meta name="keywords" content="Resume, Frontend Developer, React, JavaScript, Anna">
+    <meta name="author" content="Anna">
+    <title>Anna — Frontend Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <a class="brand" href="#hero">Anna<span class="dot">.</span></a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <section id="hero" class="screen hero">
+        <div class="hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Hi, I'm Anna</p>
+          <h1>Frontend developer<br><span class="accent">building calm, careful interfaces.</span></h1>
+          <p class="lede">I turn designs into fast, accessible web experiences using HTML, CSS, JavaScript and React.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="portfolio.html">See my work</a>
+            <a class="btn ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-animal" aria-hidden="true">
+          <!-- Octopus -->
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="octoBody" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#ff9bb0"/>
+                <stop offset="100%" stop-color="#d65a82"/>
+              </radialGradient>
+            </defs>
+            <g>
+              <!-- tentacles -->
+              <path d="M80 170 Q60 220 90 260 Q100 230 110 210" fill="#d65a82"/>
+              <path d="M110 180 Q100 240 130 270 Q135 235 140 215" fill="#e0708f"/>
+              <path d="M150 190 Q150 250 170 280 Q170 240 170 220" fill="#d65a82"/>
+              <path d="M190 180 Q210 240 180 270 Q175 235 175 215" fill="#e0708f"/>
+              <path d="M220 170 Q250 220 210 260 Q205 230 195 210" fill="#d65a82"/>
+              <!-- body -->
+              <ellipse cx="150" cy="140" rx="80" ry="70" fill="url(#octoBody)"/>
+              <!-- eyes -->
+              <circle cx="125" cy="135" r="12" fill="#fff"/>
+              <circle cx="175" cy="135" r="12" fill="#fff"/>
+              <circle cx="127" cy="138" r="6" fill="#2c2c2c"/>
+              <circle cx="177" cy="138" r="6" fill="#2c2c2c"/>
+              <circle cx="129" cy="136" r="2" fill="#fff"/>
+              <circle cx="179" cy="136" r="2" fill="#fff"/>
+              <!-- blush -->
+              <ellipse cx="110" cy="155" rx="8" ry="4" fill="#ff7a96" opacity="0.5"/>
+              <ellipse cx="190" cy="155" rx="8" ry="4" fill="#ff7a96" opacity="0.5"/>
+              <!-- smile -->
+              <path d="M140 160 Q150 170 160 160" stroke="#7a2640" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        </div>
+      </section>
+
+      <section id="about" class="screen about">
+        <div class="section-inner">
+          <div class="text">
+            <p class="eyebrow">About</p>
+            <h2>A junior dev with a designer's eye.</h2>
+            <p>I'm a self-driven frontend developer who cares about the small things: spacing, motion, accessibility, and the moments where a UI feels just right. I'm currently finishing my degree in Computer Science and looking for my first full-time role on a product team.</p>
+            <p>Outside of code I sketch, swim, and collect stickers of marine animals (clearly).</p>
+            <ul class="facts">
+              <li><strong>Based in</strong> Remote / EU timezone</li>
+              <li><strong>Looking for</strong> Junior Frontend roles</li>
+              <li><strong>Languages</strong> English, Russian</li>
+            </ul>
+          </div>
+          <div class="animal" aria-hidden="true">
+            <!-- Jellyfish -->
+            <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="jellyBody" cx="50%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#ffd6e7"/>
+                  <stop offset="100%" stop-color="#c084b3"/>
+                </radialGradient>
+              </defs>
+              <!-- tentacles -->
+              <path d="M90 150 Q85 220 100 280" stroke="#c084b3" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M115 155 Q110 230 125 290" stroke="#d39fc7" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M150 160 Q150 240 150 300" stroke="#c084b3" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M185 155 Q190 230 175 290" stroke="#d39fc7" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M210 150 Q215 220 200 280" stroke="#c084b3" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- frills -->
+              <path d="M75 140 Q90 180 110 150 Q130 180 150 150 Q170 180 190 150 Q210 180 225 140" fill="#d39fc7"/>
+              <!-- bell -->
+              <path d="M70 140 Q70 60 150 60 Q230 60 230 140 Z" fill="url(#jellyBody)"/>
+              <!-- highlight -->
+              <ellipse cx="120" cy="100" rx="20" ry="10" fill="#fff" opacity="0.4"/>
+              <!-- eyes -->
+              <circle cx="130" cy="115" r="5" fill="#2c2c2c"/>
+              <circle cx="170" cy="115" r="5" fill="#2c2c2c"/>
+              <path d="M140 130 Q150 138 160 130" stroke="#7a2640" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="screen skills">
+        <div class="section-inner reverse">
+          <div class="text">
+            <p class="eyebrow">Skills</p>
+            <h2>What I bring to the team.</h2>
+            <p>Focused on the modern frontend stack. Comfortable shipping production code, reading designs, and learning what I don't know yet.</p>
+            <div class="skill-grid">
+              <div class="skill-card">
+                <h3>Core</h3>
+                <ul>
+                  <li>HTML5 &amp; semantic markup</li>
+                  <li>CSS3, Flexbox, Grid</li>
+                  <li>JavaScript (ES2023)</li>
+                  <li>TypeScript</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3>Frameworks</h3>
+                <ul>
+                  <li>React</li>
+                  <li>Next.js</li>
+                  <li>Tailwind CSS</li>
+                  <li>Vite</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3>Workflow</h3>
+                <ul>
+                  <li>Git &amp; GitHub</li>
+                  <li>Figma → code</li>
+                  <li>REST APIs</li>
+                  <li>Responsive &amp; a11y</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="animal" aria-hidden="true">
+            <!-- Whale -->
+            <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="whaleBody" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#7aa9c7"/>
+                  <stop offset="100%" stop-color="#3e6b8a"/>
+                </linearGradient>
+              </defs>
+              <!-- water spout -->
+              <path d="M120 60 Q125 30 115 20" stroke="#a8d4e8" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M135 60 Q140 35 145 25" stroke="#a8d4e8" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <circle cx="118" cy="18" r="4" fill="#a8d4e8"/>
+              <circle cx="143" cy="22" r="3" fill="#a8d4e8"/>
+              <!-- tail -->
+              <path d="M260 130 Q300 100 305 80 Q295 130 295 150 Q280 145 260 145 Z" fill="#3e6b8a"/>
+              <!-- body -->
+              <path d="M40 150 Q40 80 130 80 Q230 80 270 140 Q230 180 130 180 Q40 180 40 150 Z" fill="url(#whaleBody)"/>
+              <!-- belly -->
+              <path d="M70 165 Q150 195 250 160 Q200 180 130 180 Q80 180 70 165 Z" fill="#cfe3ee"/>
+              <!-- fin -->
+              <path d="M150 175 Q170 200 190 180 Z" fill="#2e5470"/>
+              <!-- eye -->
+              <circle cx="80" cy="125" r="6" fill="#fff"/>
+              <circle cx="81" cy="126" r="3" fill="#2c2c2c"/>
+              <!-- smile -->
+              <path d="M55 145 Q70 155 90 150" stroke="#1f3a52" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="screen experience">
+        <div class="section-inner">
+          <div class="text">
+            <p class="eyebrow">Experience</p>
+            <h2>Projects &amp; practice.</h2>
+            <ol class="timeline">
+              <li>
+                <div class="when">2025 — now</div>
+                <div class="what">
+                  <h3>Freelance frontend projects</h3>
+                  <p>Built marketing pages and small web apps for local clients using React and Tailwind. Focus on performance and clean handoff.</p>
+                </div>
+              </li>
+              <li>
+                <div class="when">2024</div>
+                <div class="what">
+                  <h3>Open source contributor</h3>
+                  <p>Small UI fixes and accessibility improvements on a handful of community React libraries.</p>
+                </div>
+              </li>
+              <li>
+                <div class="when">2023</div>
+                <div class="what">
+                  <h3>Frontend bootcamp</h3>
+                  <p>Intensive program covering JavaScript fundamentals, React, version control, and team workflow.</p>
+                </div>
+              </li>
+            </ol>
+            <p class="hint">Want details? <a href="portfolio.html">Check the portfolio →</a></p>
+          </div>
+          <div class="animal" aria-hidden="true">
+            <!-- Seahorse -->
+            <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="seahorseBody" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#ffd17a"/>
+                  <stop offset="100%" stop-color="#e08a3c"/>
+                </linearGradient>
+              </defs>
+              <!-- body curve -->
+              <path d="M120 40 Q170 60 165 110 Q160 145 120 155 Q80 165 80 210 Q80 250 130 260 Q160 265 155 290 Q130 300 105 290"
+                    stroke="url(#seahorseBody)" stroke-width="38" fill="none" stroke-linecap="round"/>
+              <!-- crown/fin -->
+              <path d="M115 30 Q110 10 130 15 Q125 25 135 30 Q140 15 155 25 Q150 35 158 45" stroke="#e08a3c" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <!-- snout -->
+              <path d="M155 70 Q185 75 190 90 Q185 100 170 95" fill="#e08a3c"/>
+              <!-- eye -->
+              <circle cx="148" cy="75" r="5" fill="#fff"/>
+              <circle cx="149" cy="76" r="2.5" fill="#2c2c2c"/>
+              <!-- belly ridges -->
+              <path d="M100 130 L110 135 M95 160 L105 165 M85 195 L95 200 M90 225 L100 230" stroke="#b86a25" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="screen contact">
+        <div class="contact-inner">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build something good together.</h2>
+          <p class="lede">Open to junior frontend roles, internships, and small freelance projects.</p>
+          <ul class="contact-list">
+            <li><a href="mailto:anna@example.com">anna@example.com</a></li>
+            <li><a href="https://github.com/anna" target="_blank" rel="noopener">github.com/anna</a></li>
+            <li><a href="https://linkedin.com/in/anna" target="_blank" rel="noopener">linkedin.com/in/anna</a></li>
+          </ul>
+          <div class="contact-animal" aria-hidden="true">
+            <!-- Starfish -->
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="starBody" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ffb86b"/>
+                  <stop offset="100%" stop-color="#e07a3a"/>
+                </radialGradient>
+              </defs>
+              <path d="M100 20 L120 80 L185 80 L130 115 L150 180 L100 140 L50 180 L70 115 L15 80 L80 80 Z" fill="url(#starBody)"/>
+              <circle cx="80" cy="100" r="4" fill="#2c2c2c"/>
+              <circle cx="120" cy="100" r="4" fill="#2c2c2c"/>
+              <path d="M88 118 Q100 128 112 118" stroke="#7a2640" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="100" cy="95" r="2" fill="#7a2640"/>
+              <circle cx="70" cy="75" r="2" fill="#7a2640"/>
+              <circle cx="130" cy="75" r="2" fill="#7a2640"/>
+              <circle cx="85" cy="150" r="2" fill="#7a2640"/>
+              <circle cx="115" cy="150" r="2" fill="#7a2640"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Anna. Made with care &amp; coffee.</p>
+    </footer>
+
+    <script src="lil.js"></script>
+  </body>
+</html>
