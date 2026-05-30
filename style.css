@@ -29,15 +29,15 @@ body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--ink);
-  background: var(--bg);
+  background: url('background.png') center top / cover no-repeat scroll;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
-img, svg {
+/*img, svg {
   display: block;
   max-width: 100%;
-}
+}*/
 
 a {
   color: var(--accent);
@@ -82,9 +82,9 @@ li { list-style: none; }
   align-items: center;
   justify-content: space-between;
   padding: 0.6rem 1.5rem;
-  background: rgba(246, 241, 236, 0.85);
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  /* background: rgba(246, 241, 236, 0.85); 
+  backdrop-filter: saturate(180%) blur(12px); 
+  -webkit-backdrop-filter: saturate(180%) blur(12px);*/
   border-bottom: 1px solid rgba(30, 42, 58, 0.08);
   font-size: 0.92rem;
   min-height: 52px;
@@ -160,9 +160,9 @@ li { list-style: none; }
 
 /* ============ Hero ============ */
 .hero {
-  background:
+ /* background:
     radial-gradient(circle at 20% 20%, var(--accent-soft), transparent 50%),
-    linear-gradient(180deg, var(--sand) 0%, var(--bg) 100%);
+    linear-gradient(180deg, var(--sand) 0%, var(--bg) 100%);*/
   position: relative;
   overflow: hidden;
 }
@@ -231,8 +231,8 @@ li { list-style: none; }
 
 /* ============ About ============ */
 .about {
-  background:
-    linear-gradient(180deg, var(--bg) 0%, var(--sea-1) 100%);
+  /*background:
+    linear-gradient(180deg, var(--bg) 0%, var(--sea-1) 100%);*/
 }
 
 .facts {
@@ -242,7 +242,7 @@ li { list-style: none; }
 }
 .facts li {
   padding: 0.6rem 0.9rem;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 10px;
   box-shadow: var(--shadow);
   color: var(--ink-soft);
@@ -252,8 +252,8 @@ li { list-style: none; }
 
 /* ============ Skills ============ */
 .skills {
-  background:
-    linear-gradient(180deg, var(--sea-1) 0%, var(--sea-2) 100%);
+  /*background:
+    linear-gradient(180deg, var(--sea-1) 0%, var(--sea-2) 100%); */
 }
 
 .skill-grid {
@@ -263,7 +263,7 @@ li { list-style: none; }
   margin-top: 1.5rem;
 }
 .skill-card {
-  background: #fff;
+  /* background: #fff; */
   border-radius: var(--radius);
   padding: 1.2rem;
   box-shadow: var(--shadow);
@@ -300,8 +300,8 @@ li { list-style: none; }
 
 /* ============ Experience ============ */
 .experience {
-  background:
-    linear-gradient(180deg, var(--sea-2) 0%, var(--sea-3) 100%);
+  /*background:
+    linear-gradient(180deg, var(--sea-2) 0%, var(--sea-3) 100%);*/
 }
 
 .timeline {
@@ -314,7 +314,7 @@ li { list-style: none; }
   grid-template-columns: 140px 1fr;
   gap: 1.5rem;
   padding: 1.1rem 1.3rem;
-  background: #fff;
+  /* background: #fff; */
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   border-left: 4px solid var(--accent);
@@ -335,8 +335,8 @@ li { list-style: none; }
 
 /* ============ Contact ============ */
 .contact {
-  background:
-    linear-gradient(180deg, var(--sea-3) 0%, #a9cfe0 100%);
+  /*background:
+    linear-gradient(180deg, var(--sea-3) 0%, #a9cfe0 100%);*/
   text-align: center;
   position: relative;
 }
@@ -356,7 +356,7 @@ li { list-style: none; }
 .contact-list a {
   display: inline-block;
   padding: 0.7rem 1.4rem;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 999px;
   box-shadow: var(--shadow);
   color: var(--ink);
@@ -381,8 +381,8 @@ li { list-style: none; }
   text-align: center;
   font-size: 0.85rem;
   color: var(--ink-soft);
-  background: #1e2a3a;
-  color: #c4dde9;
+  /*background: #1e2a3a;
+  color: #c4dde9;*/
 }
 .site-footer p { margin: 0; color: inherit; }
 
@@ -405,7 +405,7 @@ li { list-style: none; }
 }
 
 .project {
-  background: #fff;
+  /* background: #fff; */
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -441,7 +441,7 @@ li { list-style: none; }
 .portfolio-cta {
   text-align: center;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--sea-2) 100%);
+  /*background: linear-gradient(135deg, var(--accent-soft) 0%, var(--sea-2) 100%);*/
   border-radius: var(--radius);
   margin-bottom: 3rem;
 }
