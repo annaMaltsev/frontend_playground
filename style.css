@@ -1,4 +1,3 @@
-/* ============ Reset & base ============ */
 *,
 *::before,
 *::after {
@@ -7,40 +6,58 @@
   box-sizing: border-box;
 }
 
+/* :root — это «переменные» сайта (цвета, размеры).*/
+
 :root {
-  --bg: #f6f1ec;
-  --ink: #1e2a3a;
-  --ink-soft: #4a5a6e;
-  --accent: #f1dd7c;
-  --accent-soft: #ffe1ea;
+  --bg: #f6f1ec;            /* запасной фон (если картинка не загрузится) */
+  --ink: #1e2a3a;           /* основной тёмный цвет текста */
+  --ink-soft: #4a5a6e;      /* приглушённый текст (абзацы) */
+
+  --accent: #e9c45a;        /* мягкое золото — только тонкие декоративные линии/точки */
+  --accent-ink: #1c6c7a;    /* глубокий бирюзовый — читаемые ссылки и текст-акцент */
+  --accent-soft: #ffe1ea;   /* нежно-розовый — фон тегов */
+
+  /* Матовое «стекло» карточек: полупрозрачный белый поверх фона-океана,
+     чтобы текст всегда был читаемым. */
+  --card: rgba(255, 255, 255, 0.72);
+  --card-strong: rgba(255, 255, 255, 0.85);
+
   --sea-1: #eaf3f7;
   --sea-2: #d9eaf2;
   --sea-3: #c4dde9;
-  --max: 1200px;
-  --radius: 14px;
-  --shadow: 0 10px 30px rgba(30, 42, 58, 0.08);
+
+  --max: 1200px;            /* максимальная ширина контента */
+  --radius: 14px;           /* скругление углов карточек */
+  --shadow: 0 10px 30px rgba(30, 42, 58, 0.12);  /* мягкая тень */
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 64px;
+  scroll-behavior: smooth;   
+  scroll-padding-top: 80px;
 }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--ink);
-  background: url('background.png') center top / cover no-repeat scroll;
+  background: var(--bg) url('background.png') center top / cover no-repeat;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Ссылки: бирюзовые (хорошо читаются), при наведении темнеют */
+/* На телефонах «прибитый» фон (fixed) работает рывками — там делаем обычный */
+@media (max-width: 860px) {
+  body { background-attachment: scroll; }
+}
+
 a {
-  color: #f1e77c;
+  color: var(--accent-ink);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 a:hover { color: var(--ink); }
 
+/* Заголовки — другим, более «журнальным» шрифтом */
 h1, h2, h3 {
   font-family: 'Fraunces', Georgia, serif;
   color: var(--ink);
@@ -57,20 +74,30 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 ul, ol { margin: 0; padding: 0; }
 li { list-style: none; }
 
+/* «Надзаголовок» — маленькая подпись над заголовком (About, Skills, Hi, I'm Anna).
+   Раньше класс .eyebrow использовался в HTML, но не был оформлен — теперь оформлен. */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  margin-bottom: 0.6rem;
+}
 
-/* ============ Header (narrow, sticky) ============ */
+
+/* ============ 2. Шапка ============ */
 .site-header {
-  position: sticky;
+  position: sticky;         
   top: 0;
   z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.4rem 2rem;
-  margin-top: 2rem;
+  justify-content: space-between;  
+  padding: 0.5rem 2rem;
   min-height: 48px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(2px);            
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(212, 175, 55, 0.6);
   border-bottom: 1px solid rgba(212, 175, 55, 0.6);
@@ -79,6 +106,7 @@ li { list-style: none; }
   letter-spacing: 0.05em;
 }
 
+/* Логотип «Anna.» */
 .brand {
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 700;
@@ -86,11 +114,9 @@ li { list-style: none; }
   color: var(--ink);
   letter-spacing: -0.01em;
 }
-.brand .dot { color: var(--accent); }
+.brand .dot { color: var(--accent-ink); }  
 
-.site-header nav {
-  margin-left: auto;
-}
+.site-header nav { margin-left: auto; }
 
 .nav-list {
   display: flex;
@@ -102,8 +128,9 @@ li { list-style: none; }
 .site-header nav a {
   color: var(--ink);
   font-weight: 500;
-  position: relative; 
+  position: relative;
 }
+
 
 .site-header nav a::after {
   content: '';
@@ -111,38 +138,38 @@ li { list-style: none; }
   left: 0; right: 0; bottom: -6px;
   height: 2px;
   background: var(--accent);
-  transform: scaleX(0);
+  transform: scaleX(0);       /* по умолчанию линия сжата в точку */
   transform-origin: left;
   transition: transform 0.2s ease;
 }
-.site-header nav a:hover::after { transform: scaleX(1); } 
+.site-header nav a:hover::after { transform: scaleX(1); }  /* при наведении растягивается */
 
-
+/* На узких экранах меню переносится под логотип */
 @media (max-width: 640px) {
   .site-header {
     padding: 0.5rem 1rem;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  .site-header nav {
-    width: 100%;
-  }
-  .site-header nav ul {
+  .site-header nav { width: 100%; }
+  .nav-list {
     gap: 0.6rem;
     font-size: 0.78rem;
     justify-content: flex-start;
   }
 }
-/* ============ Section frame ============ */
 
+
+/* ============ 3. Каркас секций (по одному экрану) ============ */
 .screen {
-  min-height: calc(100vh - 52px);
+  min-height: calc(100vh - 52px);  /* почти на всю высоту экрана */
   padding: 4rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Двухколоночная сетка: текст слева, картинка справа */
 .section-inner {
   max-width: var(--max);
   width: 100%;
@@ -151,10 +178,12 @@ li { list-style: none; }
   gap: 4rem;
   align-items: center;
 }
+/* .reverse меняет колонки местами (картинка слева, текст справа) */
 .section-inner.reverse { grid-template-columns: 1fr 1.2fr; }
 .section-inner.reverse .text { order: 2; }
 .section-inner.reverse .animal { order: 1; }
 
+/* На планшете/телефоне — одна колонка */
 @media (max-width: 860px) {
   .section-inner,
   .section-inner.reverse { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -163,13 +192,11 @@ li { list-style: none; }
   .animal svg { max-width: 60%; margin: 0 auto; }
 }
 
-.text p { max-width: 50ch; }
+.text p { max-width: 50ch; }  /* ограничиваем длину строки для читаемости */
 
-/* ============ Hero ============ */
+
+/* ============ 4. Hero (первый экран с девушкой) ============ */
 .hero {
- /* background:
-    radial-gradient(circle at 20% 20%, var(--accent-soft), transparent 50%),
-    linear-gradient(180deg, var(--sand) 0%, var(--bg) 100%);*/
   position: relative;
   overflow: hidden;
 }
@@ -185,24 +212,26 @@ li { list-style: none; }
 
 .hero-content { width: 100%; }
 
+/* Контейнер девушки: плавно «парит» вверх-вниз (анимация float ниже) */
 .hero-animal {
   display: flex;
   justify-content: center;
   align-items: center;
   animation: float 3s ease-in-out infinite;
 }
-.hero-animal svg { max-width: 360px; width: 100%; }
+.hero-animal svg { max-width: 440px; width: 100%; height: auto; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
 }
 
+.lede { font-size: 1.1rem; max-width: 48ch; }
 
-.lede { font-size: 1.1rem; max-width: 45ch; }
+/* Выделенная часть заголовка — курсив бирюзового цвета */
+.accent { color: var(--accent-ink); font-style: italic; }
 
-.accent { color: var(--ink); font-style: italic; }
-
+/* Ряд кнопок под заголовком */
 .cta-row {
   display: flex;
   gap: 0.8rem;
@@ -210,35 +239,28 @@ li { list-style: none; }
   flex-wrap: wrap;
 }
 
+/* Кнопки */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.3rem;
-  border-radius: 999px;
+  border-radius: 999px;       /* полностью скруглённые (таблетка) */
   font-weight: 600;
   font-size: 0.95rem;
   transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
-.btn.primary {
-  background: var(--ink);
-  color: #fff;
-}
-.btn.primary:hover { background-color: #72bcbd; color: #fff; transform: translateY(-2px); }
-.btn.ghost {
-  border: 1.5px solid var(--ink);
-  color: var(--ink);
-}
+.btn.primary { background: var(--ink); color: #fff; }
+.btn.primary:hover { background-color: var(--accent-ink); color: #fff; transform: translateY(-2px); }
+.btn.ghost { border: 1.5px solid var(--ink); color: var(--ink); }
 .btn.ghost:hover { background: var(--ink); color: #fff; transform: translateY(-2px); }
 
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; text-align: left; }
-  .hero-animal svg { max-width: 55%; margin: 0 auto; }
+  .hero-animal svg { max-width: 80%; margin: 1rem auto 0; }
 }
 
-/* ============ About ============ */
-.about {
-  
-}
 
+/* ============ 5. About (обо мне) ============ */
+/* Список фактов — матовые карточки */
 .facts {
   margin-top: 1.5rem;
   display: grid;
@@ -246,7 +268,9 @@ li { list-style: none; }
 }
 .facts li {
   padding: 0.6rem 0.9rem;
-  /* background: #fff; */
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
   box-shadow: var(--shadow);
   color: var(--ink-soft);
@@ -254,11 +278,9 @@ li { list-style: none; }
 }
 .facts strong { color: var(--ink); margin-right: 0.4rem; }
 
-/* ============ Skills ============ */
-.skills {
-  
-}
 
+/* ============ 6. Skills (навыки) ============ */
+/* Три карточки в ряд */
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -266,19 +288,21 @@ li { list-style: none; }
   margin-top: 1.5rem;
 }
 .skill-card {
-  /* background: #fff; */
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius);
   padding: 1.2rem;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease;
 }
-.skill-card:hover { transform: translateY(-4px); }
+.skill-card:hover { transform: translateY(-4px); }  /* приподнимается при наведении */
 .skill-card h3 {
   font-family: 'Inter', sans-serif;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--accent);
+  color: var(--accent-ink);
   margin-bottom: 0.7rem;
 }
 .skill-card ul { display: grid; gap: 0.35rem; }
@@ -288,6 +312,7 @@ li { list-style: none; }
   padding-left: 1rem;
   position: relative;
 }
+/* Золотая точка-маркер перед каждым навыком */
 .skill-card li::before {
   content: '';
   position: absolute;
@@ -301,11 +326,9 @@ li { list-style: none; }
   .skill-grid { grid-template-columns: 1fr; }
 }
 
-/* ============ Experience ============ */
-.experience {
-  
-}
 
+/* ============ 7. Experience (опыт) ============ */
+/* Таймлайн: слева дата, справа описание */
 .timeline {
   display: grid;
   gap: 1.2rem;
@@ -316,14 +339,16 @@ li { list-style: none; }
   grid-template-columns: 140px 1fr;
   gap: 1.5rem;
   padding: 1.1rem 1.3rem;
-  /* background: #fff; */
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--accent-ink);  /* бирюзовая полоска слева */
 }
 .timeline .when {
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 0.9rem;
 }
 .timeline h3 { margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-size: 1.05rem; }
@@ -335,17 +360,37 @@ li { list-style: none; }
   .timeline li { grid-template-columns: 1fr; gap: 0.4rem; }
 }
 
-/* ============ Contact ============ */
+/* Картинка-животное в секции опыта (скат) — плавно парит */
+.experience .animal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 4s ease-in-out infinite;
+}
+.experience .animal svg {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+}
+
+
+/* ============ 8. Contact (контакты) ============ */
 .contact {
-  /*background:
-    linear-gradient(180deg, var(--sea-3) 0%, #a9cfe0 100%);*/
   text-align: center;
   position: relative;
 }
 
+/* Внизу страницы фон-океан тёмный, поэтому весь блок контактов
+   кладём на матовую светлую «карточку» — так тёмный текст остаётся читаемым. */
 .contact-inner {
   max-width: 680px;
   width: 100%;
+  background: var(--card-strong);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 2.6rem 2rem;
+  box-shadow: var(--shadow);
 }
 
 .contact-list {
@@ -358,15 +403,16 @@ li { list-style: none; }
 .contact-list a {
   display: inline-block;
   padding: 0.7rem 1.4rem;
-  /* background: #fff; */
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 999px;
   box-shadow: var(--shadow);
   color: var(--ink);
   font-weight: 500;
   transition: transform 0.15s ease, color 0.15s ease;
 }
-.contact-list a:hover { color: var(--accent); transform: translateY(-2px); }
+.contact-list a:hover { color: var(--accent-ink); transform: translateY(-2px); }
 
+/* Морская звезда — медленно вращается */
 .contact-animal {
   margin: 2rem auto 0;
   max-width: 140px;
@@ -377,18 +423,22 @@ li { list-style: none; }
   to { transform: rotate(360deg); }
 }
 
-/* ============ Footer ============ */
+
+/* ============ 9. Подвал ============ */
+/* Тёмная полупрозрачная полоса со светлым текстом — читается на любом фоне */
 .site-footer {
-  padding: 1.5rem;
+  padding: 1.4rem;
   text-align: center;
   font-size: 0.85rem;
-  color: var(--ink-soft);
-  /*background: #1e2a3a;
-  color: #c4dde9;*/
+  background: rgba(30, 42, 58, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #e7eef2;
 }
 .site-footer p { margin: 0; color: inherit; }
 
-/* ============ Portfolio page ============ */
+
+/* ============ 10. Страница портфолио ============ */
 .portfolio-page {
   max-width: var(--max);
   margin: 0 auto;
@@ -399,6 +449,7 @@ li { list-style: none; }
 .portfolio-hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
 .portfolio-hero .back { font-weight: 500; }
 
+/* Сетка проектов: две колонки */
 .projects {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -407,7 +458,9 @@ li { list-style: none; }
 }
 
 .project {
-  /* background: #fff; */
+  background: var(--card-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -417,7 +470,7 @@ li { list-style: none; }
 }
 .project:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(30, 42, 58, 0.12);
+  box-shadow: 0 16px 40px rgba(30, 42, 58, 0.18);
 }
 
 .project-thumb { width: 100%; aspect-ratio: 20 / 14; }
@@ -427,12 +480,13 @@ li { list-style: none; }
 .project-body h2 { font-size: 1.3rem; margin: 0; }
 .project-body p { margin: 0; font-size: 0.95rem; }
 
+/* Теги технологий */
 .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0; }
 .tags li {
   font-size: 0.75rem;
   padding: 0.2rem 0.6rem;
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: rgba(28, 108, 122, 0.12);
+  color: var(--accent-ink);
   border-radius: 999px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -443,7 +497,9 @@ li { list-style: none; }
 .portfolio-cta {
   text-align: center;
   padding: 3rem 2rem;
-  /*background: linear-gradient(135deg, var(--accent-soft) 0%, var(--sea-2) 100%);*/
+  background: var(--card-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius);
   margin-bottom: 3rem;
 }
@@ -454,7 +510,10 @@ li { list-style: none; }
   .projects { grid-template-columns: 1fr; }
 }
 
-/* ============ Reveal on scroll ============ */
+
+/* ============ 11. Появление при прокрутке ============ */
+/* Секции и карточки сначала прозрачные и чуть ниже,
+   а класс .in-view (его добавляет lil.js) делает их видимыми. */
 .screen, .project {
   opacity: 0;
   transform: translateY(20px);
@@ -464,9 +523,12 @@ li { list-style: none; }
   opacity: 1;
   transform: translateY(0);
 }
-#hero { opacity: 1; transform: none; }
+#hero { opacity: 1; transform: none; }  /* первый экран виден сразу */
 
-/* ============ Reduced motion ============ */
+
+/* ============ 12. Уважение к настройкам «меньше движения» ============ */
+/* Если в системе включено «уменьшить анимацию» — выключаем всю анимацию,
+   чтобы сайт был комфортным для людей, чувствительных к движению. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }

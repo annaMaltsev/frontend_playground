@@ -1,15 +1,27 @@
-// Year in footer
+// =====================================================================
+//  Маленький скрипт сайта. Делает две вещи:
+//   1) подставляет текущий год в подвал;
+//   2) плавно показывает секции, когда до них доскроллили.
+// =====================================================================
+
+// 1) Год в подвале -----------------------------------------------------
+// Находим <span id="year"> и вставляем туда текущий год (например, 2026).
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Reveal sections on scroll
+
+// 2) Появление секций при прокрутке ------------------------------------
+// IntersectionObserver следит, какие элементы попали в видимую область.
+// Когда элемент появляется на экране — добавляем ему класс .in-view,
+// и CSS плавно проявляет его (см. блок «Появление при прокрутке» в style.css).
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('in-view');
-      io.unobserve(entry.target);
+      io.unobserve(entry.target); // больше не следим за этим элементом — анимация нужна один раз
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.15 }); // срабатывает, когда видно ~15% элемента
 
+// Запускаем наблюдение за всеми секциями и карточками проектов.
 document.querySelectorAll('.screen, .project').forEach((el) => io.observe(el));

@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Кодировка и адаптация под ширину устройства -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO: описание и ключевые слова для поисковиков -->
     <meta name="description" content="Anna — Junior Frontend Developer. Portfolio, skills and experience.">
     <meta name="keywords" content="Resume, Frontend Developer, React, JavaScript, Anna">
     <meta name="author" content="Anna">
     <title>Anna — Frontend Developer</title>
+
+    <!-- Подключаем стили и шрифты Google -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +19,10 @@
   </head>
   <body>
 
+    <!-- ============ ШАПКА: логотип + меню (прилипает к верху) ============ -->
     <header class="site-header">
+      <!-- Логотип-имя, ведёт на самый верх страницы -->
+      <a class="brand" href="#hero">Anna<span class="dot">.</span></a>
       <nav>
         <ul class="nav-list">
           <li><a href="#about">About</a></li>
@@ -28,53 +36,175 @@
 
     <main>
 
+      <!-- ============ HERO: первый экран ============ -->
       <section id="hero" class="screen hero">
         <div class="hero-inner">
-        <div class="hero-content">
-          <p class="eyebrow">Hi, I'm Anna</p>
-          <h1>Frontend developer<br><span class="accent">creating clean, responsive web interfaces.</span></h1>
-          <p class="lede">I build modern websites using HTML, CSS, JavaScript and React, with a focus on performance, accessibility and user-friendly design.</p>
-          <div class="cta-row">
-            <a class="btn primary" href="portfolio.html">See my work</a>
-            <a class="btn ghost" href="#contact">Contact me</a>
+          <!-- Левая колонка: текст и кнопки -->
+          <div class="hero-content">
+            <p class="eyebrow">Hi, I'm Anna</p>
+            <h1>Frontend developer<br><span class="accent">crafting clean, responsive interfaces.</span></h1>
+            <p class="lede">I build modern, accessible websites with HTML, CSS, JavaScript and React — with care for performance and the small details that make an interface feel right.</p>
+            <div class="cta-row">
+              <a class="btn primary" href="portfolio.html">See my work</a>
+              <a class="btn ghost" href="#contact">Contact me</a>
+            </div>
           </div>
-        </div>
-        <div class="hero-animal" aria-hidden="true">
-          <!-- Octopus -->
-          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="octoBody" cx="50%" cy="40%" r="60%">
-                <stop offset="0%" stop-color="#ff9bb0"/>
-                <stop offset="100%" stop-color="#d65a82"/>
-              </radialGradient>
-            </defs>
-            <g>
-              <!-- tentacles -->
-              <path d="M80 170 Q60 220 90 260 Q100 230 110 210" fill="#d65a82"/>
-              <path d="M110 180 Q100 240 130 270 Q135 235 140 215" fill="#e0708f"/>
-              <path d="M150 190 Q150 250 170 280 Q170 240 170 220" fill="#d65a82"/>
-              <path d="M190 180 Q210 240 180 270 Q175 235 175 215" fill="#e0708f"/>
-              <path d="M220 170 Q250 220 210 260 Q205 230 195 210" fill="#d65a82"/>
-              <!-- body -->
-              <ellipse cx="150" cy="140" rx="80" ry="70" fill="url(#octoBody)"/>
-              <!-- eyes -->
-              <circle cx="125" cy="135" r="12" fill="#fff"/>
-              <circle cx="175" cy="135" r="12" fill="#fff"/>
-              <circle cx="127" cy="138" r="6" fill="#2c2c2c"/>
-              <circle cx="177" cy="138" r="6" fill="#2c2c2c"/>
-              <circle cx="129" cy="136" r="2" fill="#fff"/>
-              <circle cx="179" cy="136" r="2" fill="#fff"/>
-              <!-- blush -->
-              <ellipse cx="110" cy="155" rx="8" ry="4" fill="#ff7a96" opacity="0.5"/>
-              <ellipse cx="190" cy="155" rx="8" ry="4" fill="#ff7a96" opacity="0.5"/>
-              <!-- smile -->
-              <path d="M140 160 Q150 170 160 160" stroke="#7a2640" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            </g>
-          </svg>
-        </div>
+
+          <!-- =====================================================================
+               Правая колонка: АНИМИРОВАННАЯ ДЕВУШКА (нарисована кодом в SVG).
+               aria-hidden="true" — картинка декоративная, скринридеры её пропускают.
+
+               Как устроен рисунок (сверху вниз по слоям):
+                 defs   — градиенты (кожа, волосы, пиджак, колготки, ноутбук, свечение)
+                 style  — анимации (см. ниже)
+                 далее идут слои: ноутбук → задние волосы → ноги → юбка →
+                          пиджак → дальняя рука → шея → голова → лицо →
+                          передние волосы → ближняя рука и кисти
+
+               Анимации (заданы в блоке <style> внутри SVG):
+                 girlKick  — ноги/каблуки слегка покачиваются вверх-вниз
+                 girlSway  — пряди волос мягко колышутся
+                 girlType  — кисти рук «печатают» (чуть двигаются)
+                 girlBlink — глаза изредка моргают
+                 girlGlow  — логотип на ноутбуке пульсирует свечением
+               Весь контейнер вдобавок «парит» (анимация float в style.css).
+               ===================================================================== -->
+          <div class="hero-animal" aria-hidden="true">
+            <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+
+              <!-- Градиенты и цвета -->
+              <defs>
+                <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f6d0ab"/><stop offset="100%" stop-color="#eaba8d"/>
+                </linearGradient>
+                <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#7c5430"/><stop offset="100%" stop-color="#4e3620"/>
+                </linearGradient>
+                <linearGradient id="hairHi" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#a87a44"/><stop offset="100%" stop-color="#6f4a2a"/>
+                </linearGradient>
+                <linearGradient id="blazer" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#363a43"/><stop offset="100%" stop-color="#1e2026"/>
+                </linearGradient>
+                <linearGradient id="tights" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3b3b44"/><stop offset="100%" stop-color="#212126"/>
+                </linearGradient>
+                <linearGradient id="laptop" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#d6dade"/><stop offset="100%" stop-color="#aab0b8"/>
+                </linearGradient>
+                <radialGradient id="emblem" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#bfeff7"/><stop offset="60%" stop-color="#8fd4e0"/>
+                  <stop offset="100%" stop-color="#8fd4e0" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Анимации рисунка -->
+              <style>
+                /* transform-box: fill-box — чтобы точка вращения считалась
+                   относительно самой фигуры, а не всего холста. */
+                .girl-legs  { transform-box: fill-box; transform-origin: 100% 82%; animation: girlKick 3.2s ease-in-out infinite; }
+                .girl-lock  { transform-box: fill-box; transform-origin: top center; animation: girlSway 4s ease-in-out infinite; }
+                .girl-lock.r { animation-delay: .6s; }
+                .girl-hand  { transform-box: fill-box; transform-origin: center; animation: girlType .55s ease-in-out infinite alternate; }
+                .girl-hand.b { animation-delay: .27s; }
+                .girl-eyes  { transform-box: fill-box; transform-origin: center; animation: girlBlink 5.5s infinite; }
+                .girl-emblem { animation: girlGlow 3s ease-in-out infinite; }
+
+                @keyframes girlKick  { 0%,100% { transform: rotate(0); }      50% { transform: rotate(-5deg); } }
+                @keyframes girlSway  { 0%,100% { transform: rotate(0); }      50% { transform: rotate(3deg); } }
+                @keyframes girlType  { 0%      { transform: translateY(0); }  100% { transform: translateY(2px); } }
+                @keyframes girlBlink { 0%,93%,100% { transform: scaleY(1); }  96% { transform: scaleY(.15); } }
+                @keyframes girlGlow  { 0%,100% { opacity: .65; }              50% { opacity: 1; } }
+              </style>
+
+              <!-- НОУТБУК (немного повёрнут) -->
+              <g>
+                <ellipse cx="384" cy="258" rx="70" ry="10" fill="#1e2a3a" opacity="0.12"/>
+                <g transform="rotate(-7 386 202)">
+                  <rect x="326" y="248" width="120" height="12" rx="5" fill="#9aa0a8"/>           <!-- основание -->
+                  <rect x="332" y="150" width="108" height="104" rx="11" fill="url(#laptop)"/>     <!-- крышка -->
+                  <rect x="332" y="150" width="108" height="104" rx="11" fill="none" stroke="#c9ced3" stroke-width="2"/>
+                  <circle class="girl-emblem" cx="386" cy="202" r="15" fill="url(#emblem)"/>        <!-- свечение логотипа -->
+                  <circle cx="386" cy="202" r="6" fill="#d8f4fa"/>                                  <!-- сам логотип -->
+                </g>
+              </g>
+
+              <!-- ЗАДНИЕ ВОЛОСЫ (за головой) -->
+              <path d="M250 84 Q204 92 200 152 Q210 172 244 164 Q230 150 248 150 Q258 120 258 100 Q260 88 250 84 Z" fill="url(#hair)"/>
+
+              <!-- НОГИ + КАБЛУКИ (колготки), вся группа покачивается -->
+              <g class="girl-legs">
+                <path d="M150 226 L75 236"  stroke="url(#tights)" stroke-width="27" fill="none" stroke-linecap="round"/> <!-- бедро 1 -->
+                <path d="M75 236 L90 146"   stroke="url(#tights)" stroke-width="22" fill="none" stroke-linecap="round"/> <!-- голень 1 -->
+                <path d="M138 233 L64 247"  stroke="url(#tights)" stroke-width="27" fill="none" stroke-linecap="round"/> <!-- бедро 2 -->
+                <path d="M64 247 L114 153"  stroke="url(#tights)" stroke-width="22" fill="none" stroke-linecap="round"/> <!-- голень 2 -->
+                <path d="M80 230 L92 150"   stroke="#55555f" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.5"/> <!-- блик -->
+                <path d="M90 146 l-14 -8 l4 -9 l16 9 z" fill="#15151a"/>   <!-- каблук 1 -->
+                <path d="M114 153 l13 -10 l5 8 l-15 11 z" fill="#15151a"/> <!-- каблук 2 -->
+              </g>
+
+              <!-- ЮБКА -->
+              <path d="M106 198 Q150 194 170 222 Q150 246 118 240 Q96 230 106 198 Z" fill="url(#blazer)"/>
+              <path d="M118 236 Q140 242 162 230" stroke="#15161b" stroke-width="2" fill="none" opacity="0.6"/> <!-- линия низа -->
+
+              <!-- ТОРС / ПИДЖАК -->
+              <path d="M206 156 Q158 176 150 208 Q150 232 172 233 Q212 221 226 182 Q224 164 206 156 Z" fill="url(#blazer)"/>
+              <path d="M200 168 Q170 184 162 206" stroke="#474b54" stroke-width="3" fill="none" opacity="0.6"/> <!-- блик талии -->
+              <path d="M214 166 L224 176 L216 190 L208 178 Z" fill="#42464f"/> <!-- лацкан 1 -->
+              <path d="M226 170 L236 180 L226 192 L220 182 Z" fill="#3a3e47"/> <!-- лацкан 2 -->
+              <path d="M219 178 L226 184 L221 192 Z" fill="#f0c39d"/>          <!-- открытый вырот -->
+
+              <!-- ДАЛЬНЯЯ РУКА (рукав + кисть) -->
+              <path d="M212 176 Q290 178 352 168" stroke="url(#blazer)" stroke-width="17" fill="none" stroke-linecap="round"/>
+              <path d="M345 170 q4 -3 8 -3" stroke="#474b54" stroke-width="2.5" fill="none" opacity="0.7"/> <!-- манжета -->
+              <ellipse class="girl-hand" cx="357" cy="166" rx="12" ry="9" fill="url(#skin)"/>
+
+              <!-- ШЕЯ -->
+              <path d="M243 138 L223 165" stroke="url(#skin)" stroke-width="15" fill="none" stroke-linecap="round"/>
+
+              <!-- ГОЛОВА + УХО -->
+              <ellipse cx="250" cy="116" rx="26" ry="30" transform="rotate(16 250 116)" fill="url(#skin)"/>
+              <ellipse cx="231" cy="122" rx="5" ry="8" transform="rotate(16 231 122)" fill="#e6b187"/>
+
+              <!-- ЛИЦО -->
+              <!-- очки -->
+              <g stroke="#2c2c33" stroke-width="2" fill="none">
+                <ellipse cx="245" cy="122" rx="9" ry="7" transform="rotate(16 245 122)" fill="#cdeef5" fill-opacity="0.22"/>
+                <ellipse cx="265" cy="127" rx="9" ry="7" transform="rotate(16 265 127)" fill="#cdeef5" fill-opacity="0.22"/>
+                <path d="M254 124 q3 1 5 2"/> <!-- перемычка -->
+              </g>
+              <!-- глаза (опущены к экрану), отдельной группой — чтобы моргали -->
+              <g class="girl-eyes">
+                <path d="M240 122 q5 4 10 1" stroke="#2a2018" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                <path d="M260 127 q5 4 10 1" stroke="#2a2018" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+              </g>
+              <path d="M239 113 q5 -2 10 1" stroke="#5a3f26" stroke-width="2" fill="none" stroke-linecap="round"/> <!-- бровь -->
+              <path d="M259 118 q5 -2 10 1" stroke="#5a3f26" stroke-width="2" fill="none" stroke-linecap="round"/> <!-- бровь -->
+              <path d="M256 130 q2 3 0 5" stroke="#d49a6f" stroke-width="1.6" fill="none" stroke-linecap="round"/> <!-- нос -->
+              <path d="M252 138 q5 3 9 1" stroke="#b06a55" stroke-width="2" fill="none" stroke-linecap="round"/>   <!-- улыбка -->
+              <ellipse cx="270" cy="133" rx="6" ry="3" fill="#f6a98f" opacity="0.45"/>                            <!-- румянец -->
+
+              <!-- ПЕРЕДНИЕ ВОЛОСЫ (чёлка и боковые пряди, пряди колышутся) -->
+              <path d="M224 108 Q220 72 256 70 Q296 72 292 114 Q283 95 268 96 Q266 82 251 84 Q239 86 240 99 Q231 95 224 108 Z" fill="url(#hairHi)"/>
+              <path class="girl-lock r" d="M290 110 Q303 134 292 160 Q289 150 286 142 Q288 152 281 158 Q286 138 283 120 Z" fill="url(#hair)"/>
+              <path class="girl-lock"   d="M225 108 Q212 132 220 158 Q224 148 226 140 Q223 152 230 156 Q225 134 230 118 Z" fill="url(#hair)"/>
+              <path d="M242 86 Q258 80 276 92" stroke="#c79356" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>   <!-- блик волос -->
+              <path d="M236 96 Q252 90 270 100" stroke="#c79356" stroke-width="1.6" fill="none" opacity="0.5" stroke-linecap="round"/> <!-- блик волос -->
+
+              <!-- БЛИЖНЯЯ РУКА + КИСТИ на ноутбуке -->
+              <path d="M218 180 Q298 186 392 170" stroke="url(#blazer)" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <path d="M384 172 q5 -3 9 -3" stroke="#474b54" stroke-width="2.5" fill="none" opacity="0.7"/> <!-- манжета -->
+              <ellipse class="girl-hand b" cx="398" cy="168" rx="13" ry="9" fill="url(#skin)"/>
+              <g stroke="#d49a6f" stroke-width="1.4" opacity="0.7" stroke-linecap="round"> <!-- намёки на пальцы -->
+                <path d="M394 172 l3 5"/><path d="M399 172 l2 6"/><path d="M404 170 l2 5"/>
+                <path d="M353 169 l2 5"/><path d="M358 169 l2 5"/>
+              </g>
+            </svg>
+          </div>
         </div>
       </section>
 
+      <!-- ============ ABOUT: обо мне ============ -->
       <section id="about" class="screen about">
         <div class="section-inner">
           <div class="text">
@@ -82,14 +212,16 @@
             <h2>A junior dev with a designer's eye.</h2>
             <p>I'm a self-driven frontend developer who cares about the small things: spacing, motion, accessibility, and the moments where a UI feels just right. I'm currently finishing my degree in Computer Science and looking for my first full-time role on a product team.</p>
             <p>Outside of code I sketch, swim, and collect stickers of marine animals (clearly).</p>
+            <!-- Короткие факты -->
             <ul class="facts">
               <li><strong>Based in</strong> Remote / EU timezone</li>
               <li><strong>Looking for</strong> Junior Frontend roles</li>
               <li><strong>Languages</strong> English, Russian</li>
             </ul>
           </div>
+
+          <!-- Картинка-животное: медуза (нарисована в SVG) -->
           <div class="animal" aria-hidden="true">
-            <!-- Jellyfish -->
             <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <radialGradient id="jellyBody" cx="50%" cy="40%" r="60%">
@@ -97,19 +229,19 @@
                   <stop offset="100%" stop-color="#c084b3"/>
                 </radialGradient>
               </defs>
-              <!-- tentacles -->
+              <!-- щупальца -->
               <path d="M90 150 Q85 220 100 280" stroke="#c084b3" stroke-width="3" fill="none" stroke-linecap="round"/>
               <path d="M115 155 Q110 230 125 290" stroke="#d39fc7" stroke-width="3" fill="none" stroke-linecap="round"/>
               <path d="M150 160 Q150 240 150 300" stroke="#c084b3" stroke-width="3" fill="none" stroke-linecap="round"/>
               <path d="M185 155 Q190 230 175 290" stroke="#d39fc7" stroke-width="3" fill="none" stroke-linecap="round"/>
               <path d="M210 150 Q215 220 200 280" stroke="#c084b3" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <!-- frills -->
+              <!-- оборки -->
               <path d="M75 140 Q90 180 110 150 Q130 180 150 150 Q170 180 190 150 Q210 180 225 140" fill="#d39fc7"/>
-              <!-- bell -->
+              <!-- купол -->
               <path d="M70 140 Q70 60 150 60 Q230 60 230 140 Z" fill="url(#jellyBody)"/>
-              <!-- highlight -->
+              <!-- блик -->
               <ellipse cx="120" cy="100" rx="20" ry="10" fill="#fff" opacity="0.4"/>
-              <!-- eyes -->
+              <!-- глаза -->
               <circle cx="130" cy="115" r="5" fill="#2c2c2c"/>
               <circle cx="170" cy="115" r="5" fill="#2c2c2c"/>
               <path d="M140 130 Q150 138 160 130" stroke="#7a2640" stroke-width="2" fill="none" stroke-linecap="round"/>
@@ -118,12 +250,14 @@
         </div>
       </section>
 
+      <!-- ============ SKILLS: навыки ============ -->
       <section id="skills" class="screen skills">
         <div class="section-inner reverse">
           <div class="text">
             <p class="eyebrow">Skills</p>
             <h2>What I bring to the team.</h2>
             <p>Focused on the modern frontend stack. Comfortable shipping production code, reading designs, and learning what I don't know yet.</p>
+            <!-- Три карточки навыков -->
             <div class="skill-grid">
               <div class="skill-card">
                 <h3>Core</h3>
@@ -154,43 +288,80 @@
               </div>
             </div>
           </div>
+
+          <!-- Картинка-животное: морская черепаха (со своей анимацией внутри SVG) -->
           <div class="animal" aria-hidden="true">
-            <!-- Whale -->
-            <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              viewBox="0 0 320 260"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 100%; max-width: 320px; height: auto; overflow: visible;"
+            >
               <defs>
-                <linearGradient id="whaleBody" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#7aa9c7"/>
-                  <stop offset="100%" stop-color="#3e6b8a"/>
+                <linearGradient id="skillsTurtleShell" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#85cbbd" />
+                  <stop offset="100%" stop-color="#3f8f86" />
                 </linearGradient>
+                <linearGradient id="skillsTurtleSkin" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#c4eadb" />
+                  <stop offset="100%" stop-color="#7ebca9" />
+                </linearGradient>
+                <filter id="skillsTurtleShadow" x="-20%" y="-20%" width="140%" height="150%">
+                  <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#1e2a3a" flood-opacity="0.14" />
+                </filter>
               </defs>
-              <!-- water spout -->
-              <path d="M120 60 Q125 30 115 20" stroke="#a8d4e8" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <path d="M135 60 Q140 35 145 25" stroke="#a8d4e8" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <circle cx="118" cy="18" r="4" fill="#a8d4e8"/>
-              <circle cx="143" cy="22" r="3" fill="#a8d4e8"/>
-              <!-- tail -->
-              <path d="M260 130 Q300 100 305 80 Q295 130 295 150 Q280 145 260 145 Z" fill="#3e6b8a"/>
-              <!-- body -->
-              <path d="M40 150 Q40 80 130 80 Q230 80 270 140 Q230 180 130 180 Q40 180 40 150 Z" fill="url(#whaleBody)"/>
-              <!-- belly -->
-              <path d="M70 165 Q150 195 250 160 Q200 180 130 180 Q80 180 70 165 Z" fill="#cfe3ee"/>
-              <!-- fin -->
-              <path d="M150 175 Q170 200 190 180 Z" fill="#2e5470"/>
-              <!-- eye -->
-              <circle cx="80" cy="125" r="6" fill="#fff"/>
-              <circle cx="81" cy="126" r="3" fill="#2c2c2c"/>
-              <!-- smile -->
-              <path d="M55 145 Q70 155 90 150" stroke="#1f3a52" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+              <style>
+                /* Анимации черепахи: парит, машет ластами, пускает пузырьки */
+                .skills-turtle { animation: skillsTurtleFloat 4.5s ease-in-out infinite; transform-origin: center; }
+                .skills-turtle-front-fin { animation: skillsTurtleFrontFin 2.4s ease-in-out infinite; transform-origin: 112px 150px; }
+                .skills-turtle-back-fin { animation: skillsTurtleBackFin 2.8s ease-in-out infinite; transform-origin: 120px 178px; }
+                .skills-turtle-bubble { animation: skillsTurtleBubble 3s ease-in-out infinite; }
+                .skills-turtle-bubble.two { animation-delay: 0.7s; }
+                .skills-turtle-bubble.three { animation-delay: 1.4s; }
+                @keyframes skillsTurtleFloat { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
+                @keyframes skillsTurtleFrontFin { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-9deg); } }
+                @keyframes skillsTurtleBackFin { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(7deg); } }
+                @keyframes skillsTurtleBubble { 0% { transform: translateY(20px); opacity: 0; } 30% { opacity: 0.55; } 100% { transform: translateY(-24px); opacity: 0; } }
+              </style>
+
+              <g class="skills-turtle" filter="url(#skillsTurtleShadow)">
+                <!-- панцирь -->
+                <ellipse cx="160" cy="150" rx="76" ry="55" fill="url(#skillsTurtleShell)" />
+                <!-- блик на панцире -->
+                <path d="M105 145 Q160 95 215 145 Q185 178 135 178 Z" fill="rgba(255,255,255,0.22)" />
+                <!-- узор панциря -->
+                <path d="M160 98 L160 199 M123 123 Q160 148 197 123 M117 166 Q160 145 203 166" stroke="#347970" stroke-width="4" fill="none" opacity="0.42" stroke-linecap="round" />
+                <!-- голова -->
+                <ellipse cx="239" cy="145" rx="28" ry="22" fill="url(#skillsTurtleSkin)" />
+                <!-- глаз -->
+                <circle cx="249" cy="139" r="3.5" fill="#1e2a3a" />
+                <!-- улыбка -->
+                <path d="M250 151 Q256 155 263 151" stroke="#527d78" stroke-width="2" fill="none" stroke-linecap="round" />
+                <!-- передний ласт -->
+                <path class="skills-turtle-front-fin" d="M108 147 Q62 120 45 146 Q70 174 111 166 Z" fill="url(#skillsTurtleSkin)" />
+                <!-- задний ласт -->
+                <path class="skills-turtle-back-fin" d="M109 168 Q67 188 55 218 Q94 222 127 181 Z" fill="url(#skillsTurtleSkin)" />
+                <!-- детали ластов -->
+                <path d="M85 146 Q95 153 108 158" stroke="#62998e" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round" />
+                <path d="M88 203 Q104 196 118 180" stroke="#62998e" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round" />
+                <path d="M84 144 Q65 137 55 147" stroke="rgba(255,255,255,0.38)" stroke-width="4" fill="none" stroke-linecap="round" />
+                <!-- пузырьки -->
+                <ellipse class="skills-turtle-bubble" cx="89" cy="70" rx="7" ry="7" fill="#ffffff" opacity="0.45" />
+                <ellipse class="skills-turtle-bubble two" cx="69" cy="98" rx="4" ry="4" fill="#ffffff" opacity="0.45" />
+                <ellipse class="skills-turtle-bubble three" cx="252" cy="78" rx="5" ry="5" fill="#ffffff" opacity="0.45" />
+              </g>
             </svg>
           </div>
         </div>
       </section>
 
+      <!-- ============ EXPERIENCE: опыт ============ -->
       <section id="experience" class="screen experience">
         <div class="section-inner">
           <div class="text">
             <p class="eyebrow">Experience</p>
             <h2>Projects &amp; practice.</h2>
+            <!-- Таймлайн с опытом -->
             <ol class="timeline">
               <li>
                 <div class="when">2025 — now</div>
@@ -216,44 +387,68 @@
             </ol>
             <p class="hint">Want details? <a href="portfolio.html">Check the portfolio →</a></p>
           </div>
-          <div class="animal" aria-hidden="true">
-            <!-- Seahorse -->
-            <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Картинка-животное: скат (анимация через теги SMIL внутри SVG) -->
+          <div class="animal manta-ray" aria-hidden="true">
+            <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="seahorseBody" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#ffd17a"/>
-                  <stop offset="100%" stop-color="#e08a3c"/>
+                <linearGradient id="rayBodyExp" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#7bb9ca" />
+                  <stop offset="100%" stop-color="#335e73" />
+                </linearGradient>
+                <linearGradient id="rayCenterExp" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#89c6d5" />
+                  <stop offset="100%" stop-color="#5f9eb1" />
                 </linearGradient>
               </defs>
-              <!-- body curve -->
-              <path d="M120 40 Q170 60 165 110 Q160 145 120 155 Q80 165 80 210 Q80 250 130 260 Q160 265 155 290 Q130 300 105 290"
-                    stroke="url(#seahorseBody)" stroke-width="38" fill="none" stroke-linecap="round"/>
-              <!-- crown/fin -->
-              <path d="M115 30 Q110 10 130 15 Q125 25 135 30 Q140 15 155 25 Q150 35 158 45" stroke="#e08a3c" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <!-- snout -->
-              <path d="M155 70 Q185 75 190 90 Q185 100 170 95" fill="#e08a3c"/>
-              <!-- eye -->
-              <circle cx="148" cy="75" r="5" fill="#fff"/>
-              <circle cx="149" cy="76" r="2.5" fill="#2c2c2c"/>
-              <!-- belly ridges -->
-              <path d="M100 130 L110 135 M95 160 L105 165 M85 195 L95 200 M90 225 L100 230" stroke="#b86a25" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+              <!-- весь скат тихонько дрейфует -->
+              <g>
+                <animateTransform attributeName="transform" type="translate" values="0 0; 4 -8; 0 0; -4 4; 0 0" dur="6s" repeatCount="indefinite" />
+                <!-- левое крыло (взмахивает) -->
+                <g>
+                  <animateTransform attributeName="transform" type="rotate" values="2 160 130; -7 160 130; 2 160 130" dur="2.7s" repeatCount="indefinite" />
+                  <path d="M160 126 Q105 74 36 111 Q83 131 145 162 Z" fill="url(#rayBodyExp)" opacity="0.96" />
+                </g>
+                <!-- правое крыло (взмахивает) -->
+                <g>
+                  <animateTransform attributeName="transform" type="rotate" values="-2 160 130; 7 160 130; -2 160 130" dur="2.7s" repeatCount="indefinite" />
+                  <path d="M160 126 Q215 74 284 111 Q237 131 175 162 Z" fill="url(#rayBodyExp)" opacity="0.96" />
+                </g>
+                <!-- центр тела -->
+                <path d="M113 119 Q160 80 207 119 Q195 168 160 184 Q125 168 113 119 Z" fill="url(#rayCenterExp)" />
+                <!-- хвост -->
+                <path d="M158 178 Q159 211 143 234" stroke="#335e73" stroke-width="5" fill="none" stroke-linecap="round" />
+                <path d="M162 178 Q163 212 181 235" stroke="#335e73" stroke-width="5" fill="none" stroke-linecap="round" />
+                <!-- глаза -->
+                <circle cx="138" cy="119" r="3.5" fill="#1e2a3a" />
+                <circle cx="182" cy="119" r="3.5" fill="#1e2a3a" />
+                <!-- улыбка -->
+                <path d="M149 138 Q160 144 171 138" stroke="#2f6273" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.75" />
+                <!-- блики -->
+                <path d="M121 120 Q91 111 64 113" stroke="rgba(255,255,255,0.35)" stroke-width="4" fill="none" stroke-linecap="round" />
+                <path d="M199 120 Q229 111 256 113" stroke="rgba(255,255,255,0.35)" stroke-width="4" fill="none" stroke-linecap="round" />
+              </g>
             </svg>
           </div>
         </div>
       </section>
 
+      <!-- ============ CONTACT: контакты ============ -->
       <section id="contact" class="screen contact">
         <div class="contact-inner">
           <p class="eyebrow">Contact</p>
           <h2>Let's build something good together.</h2>
           <p class="lede">Open to junior frontend roles, internships, and small freelance projects.</p>
+          <!-- Список контактов (пока заглушки — поменяй на свои) -->
           <ul class="contact-list">
             <li><a href="mailto:anna@example.com">anna@example.com</a></li>
             <li><a href="https://github.com/anna" target="_blank" rel="noopener">github.com/anna</a></li>
             <li><a href="https://linkedin.com/in/anna" target="_blank" rel="noopener">linkedin.com/in/anna</a></li>
           </ul>
+
+          <!-- Картинка-животное: морская звезда (медленно вращается, см. style.css) -->
           <div class="contact-animal" aria-hidden="true">
-            <!-- Starfish -->
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <radialGradient id="starBody" cx="50%" cy="50%" r="50%">
@@ -277,10 +472,13 @@
 
     </main>
 
+    <!-- ============ ПОДВАЛ ============ -->
     <footer class="site-footer">
+      <!-- Год подставляется автоматически скриптом lil.js -->
       <p>© <span id="year"></span> Anna. Made with care &amp; coffee.</p>
     </footer>
 
+    <!-- Маленький скрипт: год в подвале + появление секций при прокрутке -->
     <script src="lil.js"></script>
   </body>
 </html>

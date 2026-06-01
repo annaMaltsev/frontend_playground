@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Anna's portfolio — selected frontend projects.">
     <title>Portfolio — Anna</title>
+    <!-- Тот же файл стилей, что и на главной -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,13 +13,15 @@
   </head>
   <body>
 
+    <!-- ============ ШАПКА (та же, что на главной) ============ -->
     <header class="site-header">
       <a class="brand" href="index.html">Anna<span class="dot">.</span></a>
       <nav>
-        <ul>
+        <ul class="nav-list">
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#skills">Skills</a></li>
           <li><a href="index.html#experience">Experience</a></li>
+          <!-- aria-current="page" подсказывает скринридеру, что мы на этой странице -->
           <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
@@ -26,6 +29,7 @@
     </header>
 
     <main class="portfolio-page">
+      <!-- Вступление -->
       <section class="portfolio-hero">
         <p class="eyebrow">Portfolio</p>
         <h1>Selected work</h1>
@@ -33,6 +37,8 @@
         <p><a class="back" href="index.html">← Back to home</a></p>
       </section>
 
+      <!-- ============ СЕТКА ПРОЕКТОВ ============ -->
+      <!-- Каждый проект = карточка <article> с превью (SVG), описанием и тегами -->
       <section class="projects">
         <article class="project">
           <div class="project-thumb thumb-1" aria-hidden="true">
@@ -104,6 +110,7 @@
         </article>
       </section>
 
+      <!-- Призыв к действию -->
       <section class="portfolio-cta">
         <h2>Like what you see?</h2>
         <p>I'm looking for a junior frontend role. Let's talk.</p>
